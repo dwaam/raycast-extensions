@@ -1,0 +1,147 @@
+[
+  {
+    "scope": "Adeo",
+    "functionalDomain": "scone",
+    "icon": "",
+    "applications": [
+      {
+        "name": "scone",
+        "path": "/Users/damien/Workspace/repo/leroymerlin/scone",
+        "tags": [
+          "pro",
+          "scone"
+        ],
+        "application": "WebStorm"
+      },
+      {
+        "name": "scone-core",
+        "path": "/Users/damien/Workspace/repo/leroymerlin/scone-core",
+        "tags": [
+          "pro",
+          "scone",
+          "core"
+        ],
+        "application": "WebStorm"
+      },
+      {
+        "name": "scone-batch-gcp",
+        "path": "/Users/damien/Workspace/repo/leroymerlin/scone-batch-gcp",
+        "tags": [
+          "pro",
+          "scone",
+          "batch"
+        ],
+        "application": "WebStorm"
+      },
+      {
+        "name": "scone-batch-e2e",
+        "path": "/Users/damien/Workspace/repo/leroymerlin/scone-batch-e2e",
+        "tags": [
+          "pro",
+          "scone",
+          "test"
+        ],
+        "application": "WebStorm"
+      },
+      {
+        "name": "scone-integration-kafka",
+        "path": "/Users/damien/Workspace/repo/leroymerlin/scone-integration-kafka",
+        "tags": [
+          "pro",
+          "scone",
+          "kafka"
+        ],
+        "application": "WebStorm"
+      },
+      {
+        "name": "scone-api",
+        "path": "/Users/damien/Workspace/repo/leroymerlin/scone-api",
+        "tags": [
+          "pro",
+          "scone"
+        ],
+        "application": "WebStorm"
+      }
+    ]
+  },
+  {
+    "scope": "Personal",
+    "functionalDomain": "Raycast",
+    "icon": "",
+    "applications": [
+      {
+        "name": "JetBrains",
+        "path": "/Users/damien/Workspace/repo/perso/raycast-extensions/jetbrains",
+        "tags": [
+          "perso",
+          "raycast",
+          "jetbrains"
+        ],
+        "application": "WebStorm"
+      },
+      {
+        "name": "Random generator",
+        "path": "/Users/damien/Workspace/repo/perso/raycast-extensions/random-generator",
+        "tags": [
+          "perso",
+          "raycast",
+          "random"
+        ],
+        "application": "WebStorm"
+      },
+      {
+        "name": "Scripts",
+        "path": "/Users/damien/Workspace/repo/perso/raycast-extensions/scripts",
+        "tags": [
+          "perso",
+          "raycast",
+          "script"
+        ],
+        "application": "WebStorm"
+      }
+    ]
+  },
+  {
+    "scope": "Personal",
+    "functionalDomain": "Investment",
+    "icon": "",
+    "applications": [
+      {
+        "name": "Investment tracket",
+        "path": "/Users/damien/Workspace/repo/perso/investment-tracker",
+        "tags": [
+          "perso",
+          "investment"
+        ],
+        "application": "WebStorm"
+      }
+    ]
+  },
+  {
+    "scope": "Norauto",
+    "functionalDomain": "Customer Greeting",
+    "icon": "",
+    "applications": [
+      {
+        "name": "Customer Greeting View",
+        "path": "/Users/damien/Workspace/repo/norauto/customer-greeting-view",
+        "tags": [
+          "pro",
+          "norauto",
+          "front"
+        ],
+        "application": "WebStorm"
+      },
+      {
+        "name": "Customer Greeting Service",
+        "path": "/Users/damien/Workspace/repo/norauto/customer-greeting-service",
+        "tags": [
+          "pro",
+          "norauto",
+          "back"
+        ],
+        "application": "WebStorm"
+      }
+    ]
+  }
+]
