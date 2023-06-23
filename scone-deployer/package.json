@@ -11,11 +11,24 @@
       "name": "index",
       "title": "Deploy scone application",
       "description": "Deploy scone application on specified environment.",
-      "mode": "view"
+      "mode": "view",
+      "icon": "scone.png"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "githubToken",
+      "title": "Github Token",
+      "required": true,
+      "type": "password",
+      "description": "Github token with repository and workflow rights",
+      "placeholder": "github-token"
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.53.4"
+    "@raycast/api": "^1.53.4",
+    "@raycast/utils": "^1.8.0",
+    "octokit": "^2.1.0"
   },
   "devDependencies": {
     "@raycast/eslint-config": "1.0.5",
