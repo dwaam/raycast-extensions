@@ -1,21 +1,26 @@
 import { usePromise } from "@raycast/utils";
 import { Octokit } from "octokit";
-import { ActionPanel, Action, List, showToast, Toast, getPreferenceValues } from "@raycast/api";
+import { ActionPanel, Action, List, getPreferenceValues, useNavigation } from "@raycast/api";
 
 import { BusinessUnit } from "../interfaces/business-unit.interfaces";
 import { Environment } from "../interfaces/environment.interfaces";
 import { Project } from "../interfaces/project.interfaces";
+import SelectVersion from "./select-version";
+import { deploy } from "../service/deploy";
+import Command from "../index";
 
 export default function VersionSection(props: {
   project: Project;
   businessUnit: BusinessUnit;
   environment: Environment;
 }) {
+  const { push } = useNavigation();
+
   const octokit = new Octokit({
     auth: getPreferenceValues<Preferences>().githubToken,
   });
 
-  const { isLoading, data, revalidate } = usePromise(async () => {
+  const { isLoading, data } = usePromise(async () => {
     const tags = await octokit.request("GET /repos/{owner}/{repo}/tags", {
       owner: "adeo",
       repo: props.project.name,
@@ -39,43 +44,35 @@ export default function VersionSection(props: {
               >
                 <Action
                   title={`Deploy ${tag.name}`}
-                  onAction={() => deploy(tag.name, props.project, props.environment, props.businessUnit)}
+                  onAction={() =>
+                    deploy(tag.name, props.project, props.environment, props.businessUnit).then(() => push(<Command />))
+                  }
                 />
               </ActionPanel>
             }
           />
         ))}
+      {!isLoading && (
+        <List.Item
+          icon="question.png"
+          title="Choose your version"
+          key={`${props.project.name}-undefined`}
+          actions={
+            <ActionPanel>
+              <Action.Push
+                title="Choose the version to deploy"
+                target={
+                  <SelectVersion
+                    environment={props.environment}
+                    businessUnit={props.businessUnit}
+                    project={props.project}
+                  />
+                }
+              />
+            </ActionPanel>
+          }
+        />
+      )}
     </List.Section>
   );
-}
-
-async function deploy(version: string, project: Project, environment: Environment, businessUnit: BusinessUnit) {
-  const octokit = new Octokit({
-    auth: getPreferenceValues<Preferences>().githubToken,
-  });
-
-  try {
-    await octokit.request("POST /repos/{owner}/{repo}/actions/workflows/{workflowId}/dispatches", {
-      owner: "adeo",
-      repo: project.name,
-      workflowId: project.deployWorkflowId,
-      ref: "develop",
-      inputs: {
-        bu: businessUnit.code,
-        env: environment.code,
-        version,
-      },
-    });
-
-    await showToast({
-      style: Toast.Style.Success,
-      title: "Application is being deployed.",
-    });
-  } catch (error) {
-    await showToast({
-      style: Toast.Style.Failure,
-      title: "The application failed to deploy.",
-      message: JSON.stringify(error),
-    });
-  }
 }
